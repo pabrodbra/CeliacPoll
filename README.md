@@ -8,6 +8,20 @@ Servicio de cuestionarios para averiguar si una persona es celíaca
 
 You have to run the server and the client app to see this example working.
 
+### Server
+
+This is the server with a GraphQL API.
+
+> IMPORTANT NOTE
+>
+> The server app is not production-ready.
+
+Run it!
+
+1. `cd server`
+2. `npm install`
+3. `npm start`
+
 ### Client
 
 The client app is all about the user interface.
@@ -20,7 +34,8 @@ Run it!
 
 1. `cd client`
 2. `npm install`
-3. `npm start`
+3. `export PORT=3001`
+4. `npm start`
 
 ### Server
 
@@ -34,8 +49,7 @@ Run it!
 
 1. `cd server`
 2. `npm install`
-3. `export PORT=3001`
-4. `npm start`
+3. `npm start`
 
 ## Contributing
 
