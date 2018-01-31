@@ -38,38 +38,15 @@ class Cuestionario1 extends Component {
 					</div>
 				</div>
 			</div>
+			
 			<div id="fh5co-main">
-				<div className="container" styles="padding-top: 50px">
-					<div className="row">
-						<div className="container-fluid">
-							<div className="row animate-box">
-								<header className="header bg-primary">
-									<div className="left-title">JS Quiz</div>
-									<div className="right-title">Total Questions: <span id="tque"></span></div>
-									<div className="clearfix"></div>
-								</header>
-								<div className="content">
-									<div className="container-fluid">
-										<div className="row">
-											<div className="col-sm-12">
-												<div id="result" className="quiz-body">
-													<form name="quizForm" onSubmit="">
-														<fieldset className="form-group">
-															<h4><span id="qid">1.</span> <span id="question"></span></h4>
-															<div className="option-block-container" id="question-options">
-															</div>
-														</fieldset>
-														<button  name="previous" id="previous" className="btn btn-primary btn-lg">Previous</button>
-														&nbsp;
-														<button  name="next" id="next" className="btn btn-primary btn-lg">Next</button>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+				<div className="fh5co-cards">
+            		<div className="container-fluid">
+             			 <div className="row animate-box" id="polldiv">
+                			<div className="col-md-12 heading text-center">
+                  						<button className="btn btn-outline btn-lg" id="comenzar_1">Comenzar Cuestionario</button>
+                			</div>
+              			</div>
 					</div>
 				</div>
 			</div>

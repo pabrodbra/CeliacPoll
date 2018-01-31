@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var polls = require('./routes/polls');
+var pollresults = require('./routes/pollResults');
 var users = require('./routes/users');
 
 var config = require('./config');
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Setup Routing
 app.use('/', index);
 app.use('/polls', polls);
+app.use('/resultados', pollresults);
 app.use('/users', users);
 
 app.use(function(req, res, next) {

@@ -55,7 +55,6 @@ class Admin extends Component {
 										<li><button className="btn btn-outline btn-sm" id="btn-anadir">Añadir pregunta</button></li>
 										<li><button className="btn btn-outline btn-sm" id="btn-mod">Modificar Pregunta</button></li>
 										<li><button className="btn btn-outline btn-sm" id="btn-ver">Ver Cuestionarios</button></li>
-										<li><button className="btn btn-outline btn-sm" id="btn-grafics">Gráficas</button></li>
 									</ul>
 								</div>
 								<div className="sidebar-box animate-box">

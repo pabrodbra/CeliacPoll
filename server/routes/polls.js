@@ -70,42 +70,32 @@ router.post('/anadir/:id', function(req,res,next){
                 res.json({mensaje: "pregunta insertada con exito"});
             }
         }
-        })
+    })
 });
 
 // Modify Question ?idPreg from Poll with ?idPoll
-/*
-TODO
-*/
+router.post('/modify/:id/:idPregunta', function(req,res,next){
+    Poll.findOne({idEncuesta: req.params.id}, function(err,polls) {
+        if (err) return console.log(err);
+        
+        polls.secciones[0].preguntas[req.params.idPregunta - 1].texto = req.body.texto;
+        polls.secciones[0].preguntas[req.params.idPregunta - 1].opciones = req.body.opciones;
 
-// PollResult Controller -- Collection: pollresults
-// Get all PollResults
-router.get('/resultados', function(req,res,next) {
-    PollResult.find(function(err, pollresults) {
-        if (err) return console.log(err);
-        res.json(pollresults)
-    })
-});
-// Get all PollResults for Poll with ?idPoll
-router.get('/resultados/:id', function(req,res,next){
-    PollResult.find({idEncuesta: req.params.id}, function(err, pollresults) {
-        if (err) return console.log(err);
-        res.json(pollresults);
+        polls.save();
+        res.json({mensaje: "updated succesfully"})
     })
 });
 
-// Save a PollResult
-router.post('/encuestas/anadir', function(req,res,next) {
-    var resultado = new PollResult({
-        idEncuesta: req.body.idEncuesta,
-        respuestas: req.body.respuestas
+// Delete Question ?idPreg from Poll with ?idPoll
+router.post('/delete/:id/:idPregunta', function(req,res,next){
+    Poll.findOne({idEncuesta: req.params.id}, function(err,polls) {
+        if (err) return console.log(err);
+        var new_preguntas = polls.secciones[0].preguntas;
+        new_preguntas.pop(req.params.idPregunta - 1);
+        polls.secciones[0].preguntas = new_preguntas;
+        polls.save();
+        res.json({mensaje: "deleted succesfully"})
     });
-    resultado.save();
-    res.json(
-        {
-            mensaje: "Insertado con exito el resultado de la encuesta"
-        }
-    );
 });
 
 // Other Controller-- IDK
