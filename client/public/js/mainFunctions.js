@@ -171,7 +171,7 @@ function crearModificar(i, numEncuesta) {
 					<div class="col-md-12">\
 						<div class="form-group">\
 							<button class="btn btn-primary btn-lg " id="modificar-pregunta" >Modificar</button>\
-							<button type=button  id="borrar" class="btn btn-outline btn-lg" onClick=borrarPregunta('+i+')>Borrar</button>\
+							<button type=button  id="borrar" class="btn btn-outline btn-lg" onClick=borrarPregunta('+i+', '+numEncuesta')>Borrar</button>\
 							<button type=button class="btn btn-outline btn-sm" id="anadir-opcion" onClick="aa=crearOpcion(aa)">Anadir opcion</button>\
 						</div>	\
 					</div>\
@@ -222,9 +222,9 @@ $(document).on('click', "#modificar-pregunta", function(){
 });
 
 // -- Admin Borrar
-function borrarPregunta(i){
+function borrarPregunta(i, numEncuesta){
 	$.ajax({
-		url:"/polls/delete/1/"+i ,
+		url:"/polls/delete/"+numEncuesta+"/"+i ,
 		type: "POST",
 		data: {},
 		success:function(response){
@@ -236,25 +236,6 @@ function borrarPregunta(i){
 	});
 };
 
-$.ajax({
-		url:"/polls/total/1" ,
-		type: "GET",
-		data: {},
-		success:function(response){
-			$('#fh5co-content').html('<h3>Elija la pregunta a modificar</h3>');
-			for (var i = 1; i <= response; i++) {
-				$('#fh5co-content').append('<button class="btn btn-primary btn-lg " id="pregunta'+i+'" onClick="crearModificar('+i+')" >'+i+'</button>');
-
-			}
-			$('#fh5co-content').append('<div id="modificardiv"></div>')
-		},
-		complete:function(response){
-			
-		},
-		error:function(e){
-			console.log("***ERROR*** :: " + e)
-		}
-	});
 /*
 ---------------------
 ----- Modificar Scores
