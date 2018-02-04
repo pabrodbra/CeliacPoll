@@ -1,4 +1,5 @@
 /* PROPIETARY */	
+
 /*
 ---------------------
 ----- ADMIN AÑADIR + MODIFICAR
@@ -171,7 +172,7 @@ function crearModificar(i, numEncuesta) {
 					<div class="col-md-12">\
 						<div class="form-group">\
 							<button class="btn btn-primary btn-lg " id="modificar-pregunta" >Modificar</button>\
-							<button type=button  id="borrar" class="btn btn-outline btn-lg" onClick=borrarPregunta('+i+', '+numEncuesta')>Borrar</button>\
+							<button type=button  id="borrar" class="btn btn-outline btn-lg" onClick=borrarPregunta('+i+', ' + numEncuesta +')>Borrar</button>\
 							<button type=button class="btn btn-outline btn-sm" id="anadir-opcion" onClick="aa=crearOpcion(aa)">Anadir opcion</button>\
 						</div>	\
 					</div>\
@@ -222,9 +223,9 @@ $(document).on('click', "#modificar-pregunta", function(){
 });
 
 // -- Admin Borrar
-function borrarPregunta(i, numEncuesta){
+function borrarPregunta(i, num_encuesta){
 	$.ajax({
-		url:"/polls/delete/"+numEncuesta+"/"+i ,
+		url:"/polls/delete/"+num_encuesta+"/"+i ,
 		type: "POST",
 		data: {},
 		success:function(response){
@@ -417,7 +418,7 @@ return aa
 // --- Admin - Modificar al pulsar el botón de la encuesta
 function verResultadosEncuesta(num_encuesta){
   $.ajax({
-		url:"/resultados/total/" + num_encuesta ,
+		url:"/resultados/total/"+num_encuesta ,
 		type: "GET",
 		data: {},
 		success:function(response){
@@ -471,13 +472,13 @@ function verResultado(index, numEncuesta) {
 		success:function(response){
 			$('#resultadosdiv').html('');
 			$('#resultadosdiv').append('\
-					<div class="col-md-12"> \
-						<p class="text-left">\
-							<h4>Puntuacion Final</h4> \
-							' + response.scoreFinal+ '\
-						</p>\
-					</div>\
-					')
+				<div class="col-md-12"> \
+					<p class="text-left">\
+						<h4>Puntuacion final</h4> \
+						' + response.scoreFinal+ '\
+					</p>\
+				</div>\
+				');
 			for(respuesta of response.respuestas){
 				$('#resultadosdiv').append('\
 					<div class="col-md-12"> \
@@ -486,7 +487,7 @@ function verResultado(index, numEncuesta) {
 							' + respuesta.respuesta+ '\
 						</p>\
 					</div>\
-					')
+					');
 			}
 		},
 		error:function(e){
