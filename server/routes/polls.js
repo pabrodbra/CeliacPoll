@@ -16,6 +16,14 @@ router.get('/', function(req,res,next) {
     })
 });
 
+// Get number of Poll
+router.get('/total_encuentas/retrieve', function(req,res,next) {
+    Poll.find(function (err, polls) {
+        if (err) return console.log(err);
+        res.json(polls.length);
+    })
+});
+
 // Get Poll with ?idPoll
 router.get('/:id', function(req,res,next) {
     // pasamos el param id encuesta para filtrar y obtener el documento 
@@ -80,6 +88,19 @@ router.post('/modify/:id/:idPregunta', function(req,res,next){
         
         polls.secciones[0].preguntas[req.params.idPregunta - 1].texto = req.body.texto;
         polls.secciones[0].preguntas[req.params.idPregunta - 1].opciones = req.body.opciones;
+
+        polls.save();
+        res.json({mensaje: "updated succesfully"})
+    })
+});
+
+// Modify values of Question ?idPreg from Poll with ?idPoll
+router.post('/modify_value/:id/:idPregunta', function(req,res,next){
+    Poll.findOne({idEncuesta: req.params.id}, function(err,polls) {
+        if (err) return console.log(err);
+        
+        polls.secciones[0].preguntas[req.params.idPregunta - 1].percent_diagnostico = req.body.percent_diagnostico;
+        polls.secciones[0].preguntas[req.params.idPregunta - 1].valor_opciones = req.body.valor_opciones;
 
         polls.save();
         res.json({mensaje: "updated succesfully"})

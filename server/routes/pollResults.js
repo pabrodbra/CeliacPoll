@@ -37,38 +37,53 @@ router.post('/save/:id', function(req,res,next) {
             var t_texto = key;
             var t_selected_option = req.body[key];
 
-            // Remove the default empty value in multi-selection
-            if (t_selected_option.length > 1) 
-            t_selected_option.splice(t_selected_option.indexOf(''), 1);
+            // Find question in Poll
+            for (var i = 0; i < original_poll.secciones[0].preguntas.length; i++){
+                if (original_poll.secciones[0].preguntas[i].texto == t_texto)
+                    current_question = i;
+            }
+
+            // Get score for current question in Poll
+            var c_pregunta = original_poll.secciones[0].preguntas[current_question];
+            if (typeof(c_pregunta.tipo) !== 'undefined' &&  c_pregunta.tipo != "texto"){
+                var val_opciones = c_pregunta.opciones;
+                var score_opciones = c_pregunta.valor_opciones;
+                var percent = c_pregunta.percent_diagnostico;
+                var selected_index = -1;
+
+                if (c_pregunta.tipo != 'multi-seleccion'){
+                    for (var i = 0; i < val_opciones.length; i++){
+                        if (val_opciones[i] == t_selected_option)
+                            selected_index = i;
+                    }   
+
+                    // Get score
+                    if (selected_index != -1){
+                        score_final += percent*score_opciones[selected_index];
+                        console.log(score_final);
+                    }                    
+                }else {
+                    t_selected_option.shift();
+                    for (var j = 0; j < t_selected_option.length; j++){
+                        var current_selection = t_selected_option[j] 
+                        for (var i = 0; i < val_opciones.length; i++){
+                            if (val_opciones[i] == current_selection)
+                                selected_index = i;
+                        }
+
+                        // Get score
+                        if (selected_index != -1){
+                            score_final += percent*score_opciones[selected_index];
+                        }
+                    }
+
+                }
+            }
 
             // Save respuesta in array of respuestas
             var t_respuesta = {texto: t_texto, respuesta: t_selected_option};
             respuestas.push(t_respuesta);
 
-            // Find question in Poll
-            for (var i = 0; i < original_poll.secciones[0].preguntas.length; i++){
-              if (original_poll.secciones[0].preguntas[i].texto == t_texto)
-                current_question = i;
-            }
-
-            // Get score for current question in Poll
-            var c_pregunta = original_poll.secciones[0].preguntas[current_question];
-            if (typeof(c_pregunta.tipo) !== 'undefined' && c_pregunta.tipo != "texto"){
-              var val_opciones = c_pregunta.opciones;
-              var score_opciones = c_pregunta.valor_opciones;
-              var percent = c_pregunta.percent_diagnostico
-              var selected_index = -1;
-
-              for (var i = 0; i < val_opciones.length; i++){
-                if (val_opciones[i] == t_selected_option)
-                  selected_index = i;
-              }
-
-              // Get score
-              if (selected_index != -1){
-                score_final += percent*score_opciones[selected_index];
-              }
-            }
         });
 
         // Save Result
@@ -77,6 +92,7 @@ router.post('/save/:id', function(req,res,next) {
             respuestas: respuestas,
             scoreFinal: score_final
         });
+        console.log(score_final);
         resultado.save();
 
         // Send response
@@ -88,7 +104,6 @@ router.post('/save/:id', function(req,res,next) {
         );
 
     })
-
 
 });
 

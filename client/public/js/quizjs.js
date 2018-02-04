@@ -119,9 +119,40 @@ function createSubmit(id, text) {
 	var f = document.getElementById(id);
 
 	var i = document.createElement("button");
+	i.setAttribute("id", "enviarr")
 	i.setAttribute("class", "btn btn-primary btn-lg")
 	i.setAttribute("type", "submit");
-	i.appendChild(document.createTextNode(text));
+	i.setAttribute("onClick", "enviarForm()");
+	var tt = document.createTextNode(text);
+	i.appendChild(tt);
 
 	f.appendChild(i);
+}
+
+function enviarForm(){
+	$( '#poll_1' ).submit(function( event ) {
+		// Stop form from submitting normally
+		event.preventDefault();
+		// Get some values from elements on the page:
+		var $form = $( this )
+		// Send the data using post
+		$.ajax({
+			url         : $(this).attr('action'),
+			type        : 'POST',
+			data        : $(this).serialize(), 
+			cache       : false,
+			async       : false,
+			success: function(response){
+				alert('datos guardados, muchas gracias')
+				console.log(response);
+				$('#polldiv').html('<div class="col-md-12 heading text-center">\
+										<h2>'+response.mensaje+'</h2>\
+										<h2>El resultado de tu test es: '+response.result+'</h2>\
+                  						<a class="btn btn-outline btn-lg" href="/cuestionario1" id="home">Lo he entendido</a>\
+                			</div>')},
+			error : function(response){
+				alert('error al guardar los datos')
+			}
+		});
+	})
 }

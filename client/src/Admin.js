@@ -54,6 +54,7 @@ class Admin extends Component {
 									<ul className="sidebar-links">
 										<li><button className="btn btn-outline btn-sm" id="btn-anadir">Añadir pregunta</button></li>
 										<li><button className="btn btn-outline btn-sm" id="btn-mod">Modificar Pregunta</button></li>
+										<li><button className="btn btn-outline btn-sm" id="btn-mod-score">Modificar Score</button></li>
 										<li><button className="btn btn-outline btn-sm" id="btn-ver">Ver Cuestionarios</button></li>
 									</ul>
 								</div>
