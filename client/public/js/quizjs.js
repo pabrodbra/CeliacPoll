@@ -29,7 +29,7 @@ $(document).on('click', "#comenzar_1", function() {
 	poll_form.setAttribute("method", "POST");
 	poll_form.setAttribute("id", form_id);
 
-	
+
 	while (poll_div.firstChild) {
 	    poll_div.removeChild(poll_div.firstChild);
 	}
@@ -74,7 +74,7 @@ function createText(id, name) {
 	i.setAttribute("type", "text");
 	i.setAttribute("name", name);
 	i.setAttribute("class", "form-control");
-	
+
 	d.appendChild(i);
 	f.appendChild(d);
 
@@ -182,7 +182,7 @@ $('option').mousedown(function(e) {
     setTimeout(function() {
         $(self).parent().scrollTop(originalScrollTop);
     }, 0);
-    
+
     return false;
 });
 

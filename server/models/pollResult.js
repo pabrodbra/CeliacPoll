@@ -3,10 +3,13 @@ var mongoose = require('mongoose'),
 
 var pollResultSchema = mongoose.Schema({
     idEncuesta: Number,
+    scoreFinal: Number,
     respuestas: [{
         texto: String,
         respuesta: String
-    }]
+    }
+  ],
+  resultado: Number
 }, { collection: 'pollresults' });
 
 module.exports = mongoose.model('PollResult', pollResultSchema);
