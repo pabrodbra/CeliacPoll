@@ -36,14 +36,22 @@ router.post('/save/:id', function(req,res,next) {
         Object.keys(req.body).forEach(function(key) {
             var t_texto = key;
             var t_selected_option = req.body[key];
+
+            // Remove the default empty value in multi-selection
+            if (t_selected_option.length > 1) 
+            t_selected_option.splice(t_selected_option.indexOf(''), 1);
+
+            // Save respuesta in array of respuestas
             var t_respuesta = {texto: t_texto, respuesta: t_selected_option};
             respuestas.push(t_respuesta);
 
+            // Find question in Poll
             for (var i = 0; i < original_poll.secciones[0].preguntas.length; i++){
-              if (t_texto == original_poll.secciones[0].preguntas[i].texto)
+              if (original_poll.secciones[0].preguntas[i].texto == t_texto)
                 current_question = i;
             }
 
+            // Get score for current question in Poll
             var c_pregunta = original_poll.secciones[0].preguntas[current_question];
             if (typeof(c_pregunta.tipo) !== 'undefined' && c_pregunta.tipo != "texto"){
               var val_opciones = c_pregunta.opciones;
@@ -56,18 +64,22 @@ router.post('/save/:id', function(req,res,next) {
                   selected_index = i;
               }
 
+              // Get score
               if (selected_index != -1){
                 score_final += percent*score_opciones[selected_index];
               }
             }
         });
 
+        // Save Result
         var resultado = new PollResult({
             idEncuesta: req.params.id,
             respuestas: respuestas,
             scoreFinal: score_final
         });
         resultado.save();
+
+        // Send response
         res.json(
             {
                 mensaje: "Insertado con exito el resultado de la encuesta",
