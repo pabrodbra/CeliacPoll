@@ -14,6 +14,7 @@ function getPoll(poll_id){
 $(document).on('click', "#comenzar_2", function() {
 	var poll_response = getPoll("2");
 	var poll = poll_response.responseJSON;
+	console.log(poll);
 	var form_id = "poll_2";
 
 	var poll_div = document.getElementById("polldiv");
@@ -43,6 +44,7 @@ $(document).on('click', "#comenzar_2", function() {
 $(document).on('click', "#comenzar_1", function() {
 	var poll_response = getPoll("1");
 	var poll = poll_response.responseJSON;
+	console.log(poll);
 	var form_id = "poll_1";
 
 	var poll_div = document.getElementById("polldiv");
@@ -89,9 +91,12 @@ var quizApp = function(n) {
 		this.section = poll.secciones[0];
 		this.n_total = this.section.preguntas.length;
 
+		console.log("#--- lenght : " + this.n_total)
+
 		var div = this.n_total / this.n;
 		this.last_group = this.n_total % this.n;
-		this.n_group = Math.round(div);
+		this.n_group = Math.floor(div);
+		if (this.last_group != 0) this.n_group++;
 		this.n_total = this.section.preguntas.length;
 	}
 

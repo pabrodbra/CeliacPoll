@@ -66,7 +66,7 @@ router.post('/anadir/:id', function(req,res,next){
         }
         else {
             // comprobar si es campo de texto
-            if (req.body.texto == "texto") {
+            if (req.body.tipo == "texto") {
                 polls.secciones[0].preguntas.push({texto: req.body.texto, tipo: req.body.tipo, valor_opciones: [0], percent_diagnostico: 0});
                 polls.save();
                 res.json({mensaje: "pregunta insertada con exito"});

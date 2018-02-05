@@ -579,6 +579,7 @@ $(document).on('click', '#btn-graficas', function() {
 	    	poll_div.removeChild(poll_div.firstChild);
 		}
 	poll_div.appendChild(container_div);
+
 	var trace1 = {
   	x: [1, 2, 3, 4],
   	y: [10, 15, 13, 17],
@@ -594,4 +595,40 @@ $(document).on('click', '#btn-graficas', function() {
 	var data = [trace1, trace2];
 
 	Plotly.newPlot('holi', data);
+
+	// --
+
+	var container_div = document.createElement("div");
+	container_div.setAttribute("id", "holi1")
+	poll_div.appendChild(container_div);
+
+	var data = [{
+	values: [19, 26, 55],
+	labels: ['Residential', 'Non-Residential', 'Utility'],
+	type: 'pie'
+	}];
+
+	var layout = {
+	height: 400,
+	width: 500
+	};
+
+	Plotly.newPlot('holi1', data, layout);
+
+	// --
+
+
+	var container_div = document.createElement("div");
+	container_div.setAttribute("id", "holi2")
+	poll_div.appendChild(container_div);
+
+	var data = [
+	{
+	x: ['giraffes', 'orangutans', 'monkeys'],
+	y: [20, 14, 23],
+	type: 'bar'
+	}
+	];
+
+	Plotly.newPlot('holi2', data);
 });
