@@ -2,7 +2,7 @@
 
 ## Description
 
-Servicio de cuestionarios para averiguar si una persona es celíaca
+Quiz service to predict whether an user is gluten intolerant.
 
 ## Run the app
 
@@ -36,20 +36,6 @@ Run it!
 2. `npm install`
 3. `export PORT=3001`
 4. `npm start`
-
-### Server
-
-This is the server with a GraphQL API.
-
-> IMPORTANT NOTE
->
-> The server app is not production-ready.
-
-Run it!
-
-1. `cd server`
-2. `npm install`
-3. `npm start`
 
 ## Contributing
 
