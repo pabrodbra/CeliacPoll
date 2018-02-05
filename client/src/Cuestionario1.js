@@ -13,8 +13,8 @@ class Cuestionario1 extends Component {
 							<li className="active">
 								<a href="" className="fh5co-sub-ddown">Cuestionarios</a>
 								<ul className="fh5co-sub-menu">
-									<li className="active"><a href="/cuestionario1">Soy celíaco</a></li>
-									<li><a href="/cuestionario2">Quiero saber si soy celíaco</a></li>
+                 				   <li><a href="/cuestionario1">Quiero saber si soy celíaco</a></li>
+                				    <li><a href="/cuestionario2">Soy celíaco</a></li>
 								</ul>
 							</li>
 							<li><a href="/contact" id="contact_button">Contact</a></li>
@@ -51,50 +51,46 @@ class Cuestionario1 extends Component {
 				</div>
 			</div>
 			
-			<footer role="contentinfo" id="fh5co-footer">
-				<a href="#" className="fh5co-arrow fh5co-gotop footer-box"><i className="ti-angle-up"></i></a>
-				<div className="container">
-					<div className="row">
-						<div className="col-md-4 col-sm-6 footer-box">
-							<h3 className="fh5co-footer-heading">Company</h3>
-							<ul className="fh5co-footer-links">
-								<li><a href="#">About</a></li>
-								<li><a href="#">Services</a></li>
-								<li><a href="#">Our Products</a></li>
-								<li><a href="#">Our Culture</a></li>
-								<li><a href="#">Team</a></li>
-							</ul>
-						</div>
-						<div className="col-md-4 col-sm-6 footer-box">
-							<h3 className="fh5co-footer-heading">More Links</h3>
-							<ul className="fh5co-footer-links">
-								<li><a href="#">Terms &amp; Conditions</a></li>
-								<li><a href="#">Our Careers</a></li>
-								<li><a href="#">Support &amp; FAQ's</a></li>
-								<li><a href="signup">Sign up</a></li>
-								<li><a href="login">Log in</a></li>
-							</ul>
-						</div>
-						<div className="col-md-4 col-sm-12 footer-box">
-							<h3 className="fh5co-footer-heading">Get in touch</h3>
-							<ul className="fh5co-social-icons">
-								<li><a href="www.lahoradeladigestion.com"><i className="ti-google"></i></a></li>
-								<li><a href="#"><i className="ti-twitter-alt"></i></a></li>
-								<li><a href="#"><i className="ti-facebook"></i></a></li>
-								<li><a href="#"><i className="ti-instagram"></i></a></li>
-								<li><a href="#"><i className="ti-dribbble"></i></a></li>
-							</ul>
-						</div>
-						<div className="col-md-12 footer-box text-center">
-							<div className="fh5co-copyright">
-								<p>&copy; "Dr. Carlos de Sola". All Rights Reserved. <br/>Designed by <a href="#" target="_blank">Bioinformaticos de la UMA</a> Images by: <a href="http://unsplash.com" target="_blank">Unsplash</a></p>
-							</div>
-						</div>
-					</div>
-					<div className="fh5co-spacer fh5co-spacer-md"></div>
-				</div>
-			</footer>
-		</div>
+<footer role="contentinfo" id="fh5co-footer">
+          <a href="#" className="fh5co-arrow fh5co-gotop footer-box"><i className="ti-angle-up"></i></a>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-4 col-sm-6 footer-box">
+                <h3 className="fh5co-footer-heading">Company</h3>
+                <ul className="fh5co-footer-links">
+                  <li><a href="/contact">About</a></li>
+
+                </ul>
+              </div>
+              <div className="col-md-4 col-sm-6 footer-box">
+                <h3 className="fh5co-footer-heading">More Links</h3>
+                <ul className="fh5co-footer-links">
+                  <li><a href="/login">Log in</a></li>
+                </ul>
+              </div>
+              <div className="col-md-4 col-sm-12 footer-box">
+                <h3 className="fh5co-footer-heading">Get in touch</h3>
+                <ul className="fh5co-social-icons">
+                  <li><a href="http://www.lahoradeladigestion.com"><i className="ti-google"></i></a></li>
+                  <li><a href="https://twitter.com/"><i className="ti-twitter-alt"></i></a></li>
+                  <li><a href="https://www.facebook.com/carlos.desolaearle"><i className="ti-facebook"></i></a></li>
+                  <li><a href="https://www.instagram.com/doctordesola/"><i className="ti-instagram"></i></a></li>
+                </ul>
+              </div>
+              <div className="col-md-12 footer-box text-center">
+                <div className="fh5co-copyright">
+                  <p>
+                    &copy; "Dr. Carlos de sola". All Rights Reserved. <br/>
+                    Designed by <a href="https://www.uma.es/ETSI-informatica" target="_blank">Bioinformaticos de la UMA</a>
+                    Images by: <a href="http:%5C%5C%0Aunsplash.com" target="_blank">Unsplash</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="fh5co-spacer fh5co-spacer-md"></div>
+          </div>
+        </footer>
+      </div>
     );
   }
 }

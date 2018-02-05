@@ -67,13 +67,19 @@ router.post('/anadir/:id', function(req,res,next){
         else {
             // comprobar si es campo de texto
             if (req.body.texto == "texto") {
-                polls.secciones[0].preguntas.push({texto: req.body.texto, tipo: req.body.tipo});
+                polls.secciones[0].preguntas.push({texto: req.body.texto, tipo: req.body.tipo, valor_opciones: [0], percent_diagnostico: 0});
                 polls.save();
                 res.json({mensaje: "pregunta insertada con exito"});
             }
             else
             {
-                polls.secciones[0].preguntas.push({texto: req.body.texto, tipo: req.body.tipo, opciones: req.body.opciones});
+                var new_valor_opciones = [];
+                for (let i = 0; i < req.body.opciones.length; i++){
+                    new_valor_opciones[i] = 0;
+                }
+
+                polls.secciones[0].preguntas.push({texto: req.body.texto, tipo: req.body.tipo, opciones: req.body.opciones,
+                 valor_opciones: new_valor_opciones, percent_diagnostico: 0});
                 polls.save();
                 res.json({mensaje: "pregunta insertada con exito"});
             }

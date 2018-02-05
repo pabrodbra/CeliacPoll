@@ -6,7 +6,7 @@
 ---------------------
 */
 // --- Admin - Añadir al pulsar el botón de la encuesta
-function añadirPreguntaEncuesta(num_encuesta){
+function anadirPreguntaEncuesta(num_encuesta){
     $('#fh5co-content').html('<form id="form1" action="/polls/anadir/'+num_encuesta+'" method="POST" >\
 					<div class="col-md-12"> \
 						<div class="form-group"> \
@@ -20,6 +20,7 @@ function añadirPreguntaEncuesta(num_encuesta){
 									<select class="form-control input-lg" name="tipo" id="tipo">\
 									  <option>texto</option>\
 									  <option>seleccion</option>\
+									  <option>multi-seleccion</option>\
 									</select>\
 								</div>	\
 							</div>\
@@ -48,7 +49,7 @@ $(document).on('click', "#btn-anadir", function() {
 			$('#fh5co-content').html('<h3>Elija la encuesta a modificar</h3>');
 			for (var i = 1; i <= response; i++) {
 				$('#fh5co-content').append('<div class="heading text-center">\
-					<button class="btn btn-primary btn-lg " id="pregunta'+i+'" onClick="añadirPreguntaEncuesta('+i+')" >Encuesta '+i+'</button>\
+					<button class="btn btn-primary btn-lg " id="pregunta'+i+'" onClick="anadirPreguntaEncuesta('+i+')" >Encuesta '+i+'</button>\
 					</div>');
 
 			}
@@ -67,18 +68,6 @@ $(document).on('click', "#anadir-pregunta", function(){
 	$( "#form1" ).submit(function( event ) {
 		// Stop form from submitting normally
 		event.preventDefault();
-
-		// Get some values from elements on the page:
-		var $form = $( this ),
-		term = $form.find( "input[name='texto']" ).val();
-		tipe = $form.find( "input[name='tipo']" ).val();
-		opc = $form.find( "input[name='opciones']" ).val();
-		url ="/polls/anadir/1" ;
-		data ={ 
-			"tipo": tipo,
-			"texto": term,
-			"opciones​": [opc] 
-		}
 		// Send the data using post
 		$.ajax({
 			url         : $(this).attr('action'),
@@ -172,7 +161,7 @@ function crearModificar(i, numEncuesta) {
 					<div class="col-md-12">\
 						<div class="form-group">\
 							<button class="btn btn-primary btn-lg " id="modificar-pregunta" >Modificar</button>\
-							<button type=button  id="borrar" class="btn btn-outline btn-lg" onClick=borrarPregunta('+i+', ' + numEncuesta +')>Borrar</button>\
+							<button type=button  id="borrar" class="btn btn-outline btn-lg" onClick="borrarPregunta('+i+',' + numEncuesta +')">Borrar</button>\
 							<button type=button class="btn btn-outline btn-sm" id="anadir-opcion" onClick="aa=crearOpcion(aa)">Anadir opcion</button>\
 						</div>	\
 					</div>\
@@ -502,6 +491,7 @@ function verResultado(index, numEncuesta) {
 ----- AUTHENTICATION
 ---------------------
 */
+
 // --- Admin & LogIn/LogOut handler
 $(window).on("load", function() {
 	if(sessionStorage['token']){
@@ -573,4 +563,35 @@ $(document).on('click', "#admin_button", function(e) {
 		e.preventDefault();
 		alert('Inicie sesión para acceder al panel de control de administrador')
 	}
+});
+/*
+---------------------
+----- GRÁFICAS
+---------------------
+*/
+
+$(document).on('click', '#btn-graficas', function() {
+	console.log("TEST");
+	var container_div = document.createElement("div");
+	container_div.setAttribute("id", "holi")
+	var poll_div = document.getElementById("fh5co-content");
+		while (poll_div.firstChild) {
+	    	poll_div.removeChild(poll_div.firstChild);
+		}
+	poll_div.appendChild(container_div);
+	var trace1 = {
+  	x: [1, 2, 3, 4],
+  	y: [10, 15, 13, 17],
+  	type: 'scatter'
+	};
+
+	var trace2 = {
+  	x: [1, 2, 3, 4],
+  	y: [16, 5, 11, 9],
+  	type: 'scatter'
+	};
+
+	var data = [trace1, trace2];
+
+	Plotly.newPlot('holi', data);
 });

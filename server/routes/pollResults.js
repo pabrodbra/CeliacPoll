@@ -63,7 +63,13 @@ router.post('/save/:id', function(req,res,next) {
                         console.log(score_final);
                     }                    
                 }else {
-                    t_selected_option.shift();
+                    //t_selected_option.shift();
+                    var new_selected_option = [];
+                    for (var j = 1; j < t_selected_option.length; j++){
+                        new_selected_option[j-1] = t_selected_option[j];
+                    }
+                    t_selected_option = new_selected_option;
+                    
                     for (var j = 0; j < t_selected_option.length; j++){
                         var current_selection = t_selected_option[j] 
                         for (var i = 0; i < val_opciones.length; i++){

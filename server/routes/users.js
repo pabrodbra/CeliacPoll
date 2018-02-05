@@ -111,8 +111,8 @@ router.get('/random', function(req,res,next) {
 router.get('/setup', function(req,res,next) {
 	// Create a sample user
 	var magicdraw = new User({ 
-		email: 'magicdraw@magicdraw.com', 
-		password: 'password'
+		email: 'admin', 
+		password: 'admin'
 	});
 
 	// Save the sample user

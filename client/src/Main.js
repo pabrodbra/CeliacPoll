@@ -13,8 +13,8 @@ class MainIndex extends Component {
                 <li>
                   <a href="" className="fh5co-sub-ddown">Cuestionarios</a>
                   <ul className="fh5co-sub-menu">
-                    <li><a href="/cuestionario1">Soy celíaco</a></li>
-                    <li><a href="/cuestionario2">Quiero saber si soy celíaco</a></li>
+                    <li><a href="/cuestionario1">Quiero saber si soy celíaco</a></li>
+                    <li><a href="/cuestionario2">Soy celíaco</a></li>
                   </ul>
                 </li>
                 <li><a href="/contact">Contact</a></li>
@@ -34,7 +34,7 @@ class MainIndex extends Component {
                 <div className="fh5co-hero-intro">
                   <h1 className="to-animate hero-animate-1">CeliacPoll, ¿Sospechas que eres celíaco?<br /> Haz nuestro cuestionario.</h1>
                   <h2 className="to-animate hero-animate-2">Creado por bioinformáticos de la uma</h2>
-                  <p className="to-animate hero-animate-3"><a href="signup.html" className="btn btn-outline btn-md">Sign up</a></p>
+                  <p className="to-animate hero-animate-3"><a href="/cuestionario1" className="btn btn-outline btn-md">Cuestionario</a></p>
                 </div>
               </div>
             </div>
@@ -51,7 +51,7 @@ class MainIndex extends Component {
               </div>
               <div className="row">
                 <div className="col-lg-3 col-md-6 col-sm-6 animate-box">
-                  <a className="fh5co-card" href="cuestionario2.html">
+                  <a className="fh5co-card" href="/cuestionario2">
                     <img src="images/img_large_1.jpg"  className="img-responsive"></img>
                     <div className="fh5co-card-body">
                       <h3>Cuestionario de diagnóstico </h3>
@@ -60,7 +60,7 @@ class MainIndex extends Component {
                   </a>
                 </div>
                 <div className="col-lg-3 col-md-6 col-sm-6 animate-box">
-                  <a className="fh5co-card" href="cuestionario1.html">
+                  <a className="fh5co-card" href="/cuestionario1">
                     <img src="images/img_large_2.jpg" className="img-responsive"></img>
                     <div className="fh5co-card-body">
                       <h3>Soy celíaco y quiero ayudar al proyecto</h3>
@@ -69,7 +69,7 @@ class MainIndex extends Component {
                   </a>
                 </div>
                 <div className="col-lg-3 col-md-6 col-sm-6 animate-box">
-                  <a className="fh5co-card" href="contact.html">
+                  <a className="fh5co-card" href="/contact">
                     <img src="images/img_large_2.jpg"  className="img-responsive"></img>
                     <div className="fh5co-card-body">
                       <h3>Contacta con un Especialista</h3>
@@ -78,11 +78,11 @@ class MainIndex extends Component {
                   </a>
                 </div>
                 <div className="col-lg-3 col-md-6 col-sm-6 animate-box">
-                  <a className="fh5co-card" href="signup.html">
+                  <a className="fh5co-card" href="/login">
                     <img src="images/img_large_3.jpg"  className="img-responsive"></img>
                     <div className="fh5co-card-body">
-                      <h3>Registrate</h3>
-                      <p>Registrate aquí si aún no lo has hecho</p>
+                      <h3>Inicia Sesión</h3>
+                      <p>Si posees una cuenta de administrador de este sitio web, pulsa aquí</p>
                     </div>
                   </a>
                 </div>
@@ -118,38 +118,30 @@ class MainIndex extends Component {
               <div className="col-md-4 col-sm-6 footer-box">
                 <h3 className="fh5co-footer-heading">Company</h3>
                 <ul className="fh5co-footer-links">
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Services</a></li>
-                  <li><a href="#">Our Products</a></li>
-                  <li><a href="#">Our Culture</a></li>
-                  <li><a href="#">Team</a></li>
+                  <li><a href="/contact">About</a></li>
+
                 </ul>
               </div>
               <div className="col-md-4 col-sm-6 footer-box">
                 <h3 className="fh5co-footer-heading">More Links</h3>
                 <ul className="fh5co-footer-links">
-                  <li><a href="#">Terms &amp; Conditions</a></li>
-                  <li><a href="#">Our Careers</a></li>
-                  <li><a href="#">Support &amp; FAQ's</a></li>
-                  <li><a href="signup">Sign up</a></li>
-                  <li><a href="login">Log in</a></li>
+                  <li><a href="/login">Log in</a></li>
                 </ul>
               </div>
               <div className="col-md-4 col-sm-12 footer-box">
                 <h3 className="fh5co-footer-heading">Get in touch</h3>
                 <ul className="fh5co-social-icons">
-                  <li><a href="www.lahoradeladigestion.com"><i className="ti-google"></i></a></li>
-                  <li><a href="#"><i className="ti-twitter-alt"></i></a></li>
-                  <li><a href="#"><i className="ti-facebook"></i></a></li>
-                  <li><a href="#"><i className="ti-instagram"></i></a></li>
-                  <li><a href="#"><i className="ti-dribbble"></i></a></li>
+                  <li><a href="http://www.lahoradeladigestion.com"><i className="ti-google"></i></a></li>
+                  <li><a href="https://twitter.com/"><i className="ti-twitter-alt"></i></a></li>
+                  <li><a href="https://www.facebook.com/carlos.desolaearle"><i className="ti-facebook"></i></a></li>
+                  <li><a href="https://www.instagram.com/doctordesola/"><i className="ti-instagram"></i></a></li>
                 </ul>
               </div>
               <div className="col-md-12 footer-box text-center">
                 <div className="fh5co-copyright">
                   <p>
                     &copy; "Dr. Carlos de sola". All Rights Reserved. <br/>
-                    Designed by <a href="#" target="_blank">Bioinformaticos de la UMA</a>
+                    Designed by <a href="https://www.uma.es/ETSI-informatica" target="_blank">Bioinformaticos de la UMA</a>
                     Images by: <a href="http:%5C%5C%0Aunsplash.com" target="_blank">Unsplash</a>
                   </p>
                 </div>
